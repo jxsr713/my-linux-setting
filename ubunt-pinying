@@ -1,0 +1,80 @@
+https://blog.csdn.net/Chamico/article/details/89788324
+
+Ubuntu 安装中文输入法
+Chamico 2019-05-03 17:41:27 79325 收藏 117
+版权
+请注意命令中不应该的空格可能导致命令不合法！
+一、检查 fcitx 框架
+
+       首先，要安装中文输入法，必须要保证系统上有 fcitx。fcitx是一个以 GPL 方式发布的输入法框架，安装 fcitx 后可以为操作系统的桌面环境提供一个灵活的输入方案，解决在 GNU/Linux 环境下安装中文输入法的问题。
+
+       win + a 打开所有应用程序，找到 Language Support 并打开，在 kygboard input method system 中查看是否有 fcitx 。如果有，请设置为 fcitx ,如果没有，则手动安装：sudo apt-get install fcitx （sudo apt install fcitx ）。
+
+        修复依赖关系（执行apt-get命令失败后使用该命令，然后重新执行上一次失败的命令）：sudo apt-get install -f
+
+        之后重启电脑，重新设置 kygboard input method system 为 fcitx。
+
+  
+
+ 
+二、安装输入法（二选一）
+
+注：搜狗输入法比 Google 输入法好用
+(一)、搜狗输入法
+
+1、进入搜狗输入法的官网，找到linux环境下的 .deb 的安装包并下载（注意 32 位 和 64 位）。下载的时候有一个可选项，是下载安装或者是保存，建议大家保存，下载安装的那个选项安装完后好像没效果（可能是自身操作的问题）。搜狗输入法 Linux 版官方链接：https://pinyin.sogou.com/linux/?r=pinyin 。
+
+2、使用 dpkg 命令安装即可：（最后一个参数是你下载的包的名称）
+
+sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
+
+3、修复依赖关系：sudo apt-get install -f
+
+4、重启系统。
+(二)、Google 输入法
+
+注：googlepinyin 有基于 fcitx 框架的，也有基于 ibus 框架的。
+
+1、直接安装。(如果安装失败提示 E: Unable to locate package fcitx-googlepinyin 时，先执行： sudo apt install fcitx 再执行如下命令)
+
+sudo apt install fcitx-googlepinyin   
+
+2、修复依赖关系：sudo apt-get install -f
+
+3、重启系统。
+
+ 
+三、设置输入法：
+
+1、win + a 打开所有应用，搜索 fcitx configuration 并打开。
+
+2、取消勾选
+
+3、点击 “+” 新增输入法，在搜索框直接搜索即可
+
+4、OK 即可
+
+5、将你喜欢使用的输入法置顶，因为输入法在启动的时候是按顺序启动的。
+
+注：如果设置完后输入法还是无法启动，重启系统即可。
+
+ 
+四、卸载
+
+1、卸载 googlepinyin
+
+①、sudo apt-get purge fcitx-googlepinyin
+
+②、百度的方法，没试过（基于ibus框架下的）。
+
+sudo apt-get remove ibus                        
+sudo apt-get remove ibus-goog
+
+2、卸载搜狗输入法（卸载之前将系统的输入法设置为 ibus ，否则系统重启后没有输入法可用）
+
+卸载 fcitx：  sudo apt-get purge fcitx
+
+卸载 fcitx及相关配置：sudo apt-get autoremove
+————————————————
+版权声明：本文为CSDN博主「Chamico」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/Chamico/article/details/89788324
