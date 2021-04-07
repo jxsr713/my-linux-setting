@@ -8,7 +8,9 @@ VIM的胚子
 # some recommand vimrc:
 https://github.com/amix/vimrc  
 https://github.com/laixintao/myrc  
+https://github.com/humiaozuzu/dot-vimrc  
 
 # some refer html
 https://cloud.tencent.com/developer/article/1058322  
+**https://cloud.tencent.com/developer/article/1058322**
 
