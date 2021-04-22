@@ -14,3 +14,4 @@ https://github.com/humiaozuzu/dot-vimrc
 https://cloud.tencent.com/developer/article/1058322  
 **https://cloud.tencent.com/developer/article/1058322**
 
+# 从04/22所有的文件都放到对应的目录中了。
