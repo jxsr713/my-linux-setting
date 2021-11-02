@@ -6,6 +6,8 @@ VIM的胚子
 
 
 
+
+
 # some recommand vimrc:
 https://github.com/amix/vimrc  
 https://github.com/laixintao/myrc  
