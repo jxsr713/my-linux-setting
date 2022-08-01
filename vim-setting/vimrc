@@ -138,7 +138,8 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 nnoremap <leader>lo :lopen<CR> "open locationlist                                                                                                                      
@@ -238,8 +239,8 @@ func SetTitle()
 	if &filetype == 'sh' 
 		call setline(1,"\#########################################################################") 
 		call append(line("."), "\# File Name: ".expand("%")) 
-		call append(line(".")+1, "\# Author: jxsr713") 
-		call append(line(".")+2, "\# mail: jxsr713@163.com") 
+		call append(line(".")+1, "\# Author: weihong") 
+		call append(line(".")+2, "\# mail: ") 
 		call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
 		call append(line(".")+4, "\#########################################################################") 
 		call append(line(".")+5, "\#!/bin/bash") 
@@ -247,8 +248,8 @@ func SetTitle()
 	else 
 		call setline(1, "/*************************************************************************") 
 		call append(line("."), "    > File Name: ".expand("%")) 
-		call append(line(".")+1, "    > Author: jxsr713") 
-		call append(line(".")+2, "    > Mail: jxsr713@163.com ") 
+		call append(line(".")+1, "    > Author: weihong") 
+		call append(line(".")+2, "    > Mail:  ") 
 		call append(line(".")+3, "    > Created Time: ".strftime("%c")) 
 		call append(line(".")+4, " ************************************************************************/") 
 		call append(line(".")+5, "")
@@ -356,10 +357,26 @@ set confirm
 set autoindent
 set cindent
 " Tab键的宽度
-set tabstop=4
-" 统一缩进为4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=8
+" 在insert模式下，按下一个tab所占有的空格数量
+set softtabstop=8
+"自动缩进的空格数量
+set shiftwidth=8
+"设置特定文件的参数
+"autocmd Filetype sh setlocal ts=2 sts=2 sw=2 et
+" highlight tabs with '>-' symbols
+set list
+set listchars=tab:>-
+"
+" highlight trailing whitespace
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+highlight ColorColumn ctermbg=gray
+set colorcolumn=80
+"设置paste模式的泗洪，整段复制不会出现缩进错位
+"set paste
+
+
 " 不要用空格代替制表符
 set noexpandtab
 " 在行和段开始处使用制表符
@@ -427,15 +444,15 @@ set scrolloff=3
 set smartindent
 " 高亮显示普通txt文件（需要txt.vim脚本）
 au BufRead,BufNewFile *  setfiletype txt
-"自动补全
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {<CR>}<ESC>O
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap " ""<ESC>i
-:inoremap ' ''<ESC>i
+"自动补全(/{/[
+":inoremap ( ()<ESC>i
+":inoremap ) <c-r>=ClosePair(')')<CR>
+":inoremap { {<CR>}<ESC>O
+":inoremap } <c-r>=ClosePair('}')<CR>
+":inoremap [ []<ESC>i
+":inoremap ] <c-r>=ClosePair(']')<CR>
+":inoremap " ""<ESC>i
+":inoremap ' ''<ESC>i
 function! ClosePair(char)
 	if getline('.')[col('.') - 1] == a:char
 		return "\<Right>"
